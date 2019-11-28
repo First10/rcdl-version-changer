@@ -1,4 +1,4 @@
-# rcdl-version-changer
+# Royal Canin Design Language Version Changer
 
 To install the extension locally:
 
