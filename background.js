@@ -1,24 +1,26 @@
-chrome.runtime.onMessage.addListener(
-  function(message, callback) {
-    console.log('message:', message);
-    if (message == "runContentScript"){
-      console.log('running script');
-      // chrome.tabs.executeScript({
-      //   file: 'contentScript.js'
-      // });
-    }
- });
-
 (function() {
+
+  console.log('test');
+
   "use strict";
 
-  // chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-  //   chrome.tabs.sendMessage(tabs[0].id, {greeting: "hello"}, function(response) {
-  //     console.log(response.farewell);
-  //   });
-  // });
-
   var desiredVersion = null;
+
+
+
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function() {
+      var json = xhr.responseText;                         // Response
+      json = json.replace(/^[^(]*\(([\S\s]+)\);?$/, '$1'); // Turn JSONP in JSON
+      json = JSON.parse(json);                             // Parse JSON
+      // ... enjoy your parsed json...
+  };
+  // Example:
+  console.log('json', xhr.open('GET', 'https://data.ct.gov/api/views/rybz-nyjw/rows.json'));
+  xhr.send();
+
+
+
 
   getData('desiredVersion').then((value) => {
     desiredVersion = value;

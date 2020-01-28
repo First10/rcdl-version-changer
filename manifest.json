@@ -6,7 +6,7 @@
   "version": "1.0",
 
   "permissions": [
-    "storage", "webRequest", "webRequestBlocking", "<all_urls>", "tabs", "activeTab"
+    "storage", "webRequest", "webRequestBlocking", "<all_urls>", "tabs", "activeTab", "http://localhost:3000/assets/*"
   ],
 
   "background": {
