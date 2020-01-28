@@ -1,26 +1,8 @@
 (function() {
 
-  console.log('test');
-
   "use strict";
 
   var desiredVersion = null;
-
-
-
-  var xhr = new XMLHttpRequest();
-  xhr.onload = function() {
-      var json = xhr.responseText;                         // Response
-      json = json.replace(/^[^(]*\(([\S\s]+)\);?$/, '$1'); // Turn JSONP in JSON
-      json = JSON.parse(json);                             // Parse JSON
-      // ... enjoy your parsed json...
-  };
-  // Example:
-  console.log('json', xhr.open('GET', 'https://data.ct.gov/api/views/rybz-nyjw/rows.json'));
-  xhr.send();
-
-
-
 
   getData('desiredVersion').then((value) => {
     desiredVersion = value;
@@ -34,7 +16,6 @@
       let storageChange = changes[key];
       desiredVersion = storageChange.newValue;
     }
-    console.log('test');
   });
 
   function getData(key) {
