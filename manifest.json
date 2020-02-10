@@ -6,11 +6,18 @@
   "version": "1.0",
 
   "permissions": [
-    "storage", "webRequest", "webRequestBlocking", "<all_urls>", "tabs", "activeTab", "http://localhost:3000/assets/*"
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>",
+    "tabs",
+    "activeTab",
+    "http://localhost:3000/assets/*"
   ],
 
   "background": {
-    "page": "background.html"
+    "scripts": ["background.js"],
+    "persistent": true
   },
 
   "browser_action": {
@@ -23,5 +30,4 @@
     "48": "images/icon-48.png",
     "128": "images/icon-128.png"
   }
-
 }
