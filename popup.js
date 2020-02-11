@@ -1,15 +1,21 @@
-// var app = chrome.runtime.getBackgroundPage();
+const versionSelector = document.getElementById('version-selector');
 
-const versionSelector = document.getElementById('versionSelector');
+var desiredVersion = null;
+
+function getData(key) {
+  return new Promise((resolve, reject) => {
+    chrome.storage.local.get([`${key}`], result => {
+      return resolve(result.desiredVersion);
+    });
+  });
+}
+
+getData('desiredVersion').then((value) => {
+  desiredVersion = value;
+});
 
 chrome.storage.local.get(['desiredVersion'], function(result) {
   document.querySelectorAll(`option[value="${result.desiredVersion}"]`)[0].setAttribute('selected', true);
-});
-
-chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-  chrome.tabs.sendMessage(tabs[0].id, {data: text}, function(response) {
-    console.log('response:', response);
-  });
 });
 
 function changeVersion(e) {
@@ -30,6 +36,9 @@ request.onload = function() {
       var option = document.createElement("option");
       option.value = data[i];
       option.text = data[i];
+      if(desiredVersion === option.value){
+        option.selected = true
+      }
       versionSelector.appendChild(option);
     }
   } else {
@@ -42,4 +51,4 @@ request.onerror = function() {
 
 const dataSet = request.send();
 
-document.getElementById('clickme').addEventListener('click', changeVersion);
+document.getElementById('reload-page').addEventListener('click', changeVersion);

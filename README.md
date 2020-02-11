@@ -1,5 +1,10 @@
 # Royal Canin Design Language Version Changer
 
+This extension is for use with any site using the Royal Canon Design Language.
+Install the extension and navigate to this URL to see it work in the wild: http://developer.royalcanin.com/
+
+## Installing
+
 To install the extension locally:
 
 - Clone this repo to your local machine.
@@ -8,8 +13,7 @@ To install the extension locally:
 - Click Load Unpacked in the top left hand corner.
 - Select the Extension folder.
 
-To user the extension:
-
+## Using
 - Open a Hub in chrome.
 - Click the red/white square icon in your toolbar top right.
 - Select the version that you want to test.
